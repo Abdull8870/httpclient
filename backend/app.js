@@ -21,6 +21,9 @@ app.use((req, res, next) => {
 app.get("/places", async (req, res) => {
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
+  // Just to check if the error response from the backend is getting rendered
+  // res.status(500).json({message:"Some unexpected error occured"});
+
   const fileContent = await fs.readFile("./data/places.json");
 
   const placesData = JSON.parse(fileContent);
